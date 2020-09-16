@@ -50,6 +50,9 @@ datos <- datos[!is.na(datos$weight_kg),]
 datos = datos[c(13,19,20,21,22,23,24)]
 
 
+### �Que es lo primero que tenemos que hacer ? ###
+
+
 
 
 
@@ -75,6 +78,8 @@ gra1 <- corrplot(cor.poke, method='number',type='upper')
 
 
 
+
+
 ## Se puede ver que existe un pequeño indicio que el hp, ataque y defensa 
 #pueden estar relacionados al peso de un pokemon.
 
@@ -95,6 +100,12 @@ modelo <- lm(weight_kg ~ . , datos)
 
 
 
+
+
+
+
+
+
 # Haciendo un summary del modelo, podemos ver que las variables
 # que son más significativas al modelo son hp, ataque y defenza.
 
@@ -104,7 +115,7 @@ modelo <- lm(weight_kg ~ . , datos)
 
 
 # Otra forma de ver que variable sacar del modelo es por medio de un 
-# analisis  de stepwise
+# analisis  de stepwise mixto Akaike(AIC)
 
 stepwise <- step(object = modelo, direction = "both", trace = 1)
 
@@ -112,6 +123,10 @@ stepwise <- step(object = modelo, direction = "both", trace = 1)
 # Cuidado al usar esta función que existen fundamentos matematicos
 # por detras que no estamos viendo. En general vamos a verlo al ojo. 
 #########################################################
+
+
+
+
 
 nuevo.modelo <- lm(weight_kg ~ hp + attack + defense + sp_attack + speed , datos)
 
@@ -218,7 +233,7 @@ lineal.plot <- grid.arrange(hp.plot, attack.plot, defense.plot, sp_attack.plot, 
 
 
 # Con esto podemos que todas las variables se comportan de forma aleatoria, por 
-# lo que podemos super linealidad.
+# lo que podemos suponer linealidad.
 
 
 

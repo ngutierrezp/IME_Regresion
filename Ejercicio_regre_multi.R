@@ -39,3 +39,7 @@ datos <- mutate(.data = datos, densidad_pobl = habitantes * 1000 / area)
 # temas bastantes interesantes respecto al data science.
 
 
+
+# Y = b1* tipo_pokemon 
+
+# Y = b1* agua + b2* fuego + b3* siniestro.

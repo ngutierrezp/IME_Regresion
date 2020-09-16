@@ -92,8 +92,9 @@ cor.petal <- cor.test(x=datos$Petal.Length,
 
 
 
-modelo <- lm(formula = Petal.Width ~ Petal.Length, datos )
+modelo <- lm(formula = Petal.Width ~ Petal.Length, datos)
 
+# Y = -0.363076 + 0.415755  * X + e
 
 
 
