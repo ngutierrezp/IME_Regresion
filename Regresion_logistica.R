@@ -282,13 +282,18 @@ high.result <- summary(high.reg)
 
 
 ## Establecemos el valor threshold en 50%
-matrix <- conf.matrix(high.reg, test.df, 0.5)
+matrix <- conf.matrix(high.reg, test.df, 0.5 )
 
 # matriz de confucion
 conf.matriz<- matrix$matrix
 
 #datos del mismo modelo
 model.data <- matrix$data
+
+
+
+
+
 
 
 

@@ -7,7 +7,7 @@ bar.plot.categorical <- function(my_df){
   
   ######### sex plot #########
   
-  sex.df <- count(data.frame(sex=my_df$sex,disease=my_df$disease))
+  sex.df <- data.frame(sex=my_df$sex,disease=my_df$disease)
   
   sex.plot <- ggplot(data=sex.df, aes(x=sex, y=freq, fill=disease)) +
     geom_bar(stat="identity", position=position_dodge()) +
@@ -100,3 +100,40 @@ bar.plot.categorical <- function(my_df){
   return(all.plot)
   
 }
+
+
+particular.plot <- function(x,name,class){
+  
+  df <- count(data.frame(sex=x,disease=class))
+  
+  plot <- ggplot(data=df, aes(x=sex, y=freq, fill=disease)) +
+    geom_bar(stat="identity", position=position_dodge()) +
+    geom_text(aes(label=freq), vjust=1, color="black",
+              position = position_dodge(0.9), size=3) +
+    ggtitle(paste("Frecuency Plot for ",name))
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+  
+  
+  return(plot)
+}
+
+
+my.multiplot <- function(x,df,class){
+  
+  a <-apply(df,2,function(y) particular.plot(y,x,class))
+  return(a)
+  
+}
+
+getMultiplot <- function(df,class){
+  
+  colname <- colnames(df)
+  a <- lapply(colname,FUN=function(x) my.multiplot(x,df,class))
+  return(a)
+  
+}
+
+
+
+
+
